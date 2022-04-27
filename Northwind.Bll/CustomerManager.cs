@@ -1,4 +1,5 @@
-﻿using Northwind.Entity.Dto;
+﻿using Northwind.Dal.Abstract;
+using Northwind.Entity.Dto;
 using Northwind.Entity.IBase;
 using Northwind.Entity.Models;
 using Northwind.Interface;
@@ -13,6 +14,13 @@ namespace Northwind.Bll
 {
     public class CustomerManager : GenericManager<Customer, DtoCustomer>, ICustomerService
     {
+        private readonly ICustomerRepository customerRepository;
+
+        public CustomerManager(ICustomerRepository customerRepository)
+        {
+            this.customerRepository = customerRepository;
+        }
+
         //ICustomerRepository
         public IQueryable<DtoCustomer> GetTotalReport()
         {

@@ -1,4 +1,5 @@
-﻿using Northwind.Entity.Dto;
+﻿using Northwind.Dal.Abstract;
+using Northwind.Entity.Dto;
 using Northwind.Entity.Models;
 using Northwind.Interface;
 using System;
@@ -11,5 +12,11 @@ namespace Northwind.Bll
 {
     public class CustomerDemographicManager : GenericManager<CustomerDemographic, DtoCustomerDemographic>, ICustomerDemographicService
     {
+        private readonly ICustomerDemographicRepository customerDemographicRepository;
+
+        public CustomerDemographicManager(ICustomerDemographicRepository customerDemographicRepository)
+        {
+            this.customerDemographicRepository = customerDemographicRepository;
+        }
     }
 }

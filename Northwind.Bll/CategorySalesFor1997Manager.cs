@@ -1,4 +1,5 @@
-﻿using Northwind.Entity.Dto;
+﻿using Northwind.Dal.Abstract;
+using Northwind.Entity.Dto;
 using Northwind.Entity.Models;
 using Northwind.Interface;
 using System;
@@ -11,5 +12,11 @@ namespace Northwind.Bll
 {
     public class CategorySalesFor1997Manager : GenericManager<CategorySalesFor1997, DtoCategorySalesFor1997>, ICategorySalesFor1997Service
     {
+        private readonly IAlphabeticalListOfProductRepository alphabeticalListOfProductRepository;
+
+        public CategorySalesFor1997Manager(IAlphabeticalListOfProductRepository alphabeticalListOfProductRepository)
+        {
+            this.alphabeticalListOfProductRepository = alphabeticalListOfProductRepository;
+        }
     }
 }

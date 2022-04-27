@@ -1,4 +1,5 @@
-﻿using Northwind.Entity.Base;
+﻿using Northwind.Dal.Abstract;
+using Northwind.Entity.Base;
 using Northwind.Entity.IBase;
 using Northwind.Interface;
 using System;
@@ -12,6 +13,11 @@ namespace Northwind.Bll
 {
     public class GenericManager<T, TDto> : IGenericService<T, TDto> where T : EntityBase where TDto : DtoBase
     {
+        private readonly IGenericRepository<T> genericRepository;
+        public GenericManager(IGenericRepository<T> genericRepository)
+        {
+            this.genericRepository = genericRepository;
+        }
         //unitOfwork
         //IServiceProvider
         //GenericRepository
